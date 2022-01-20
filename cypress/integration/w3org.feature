@@ -4,6 +4,7 @@ Feature: W3org
 
     Scenario Outline: Validate w3org page
         Given open w3org home page with <path>
+        And there is no console error
 
     Examples:
         | path                                |
