@@ -2,17 +2,29 @@
   "name": "cypress-w3org",
   "scripts": {
     "prettier": "prettier --config .prettierrc 'cypress/**/*.ts' --check",
-    "prettier-format": "prettier --config .prettierrc 'cypress/**/*.ts' --write"
+    "prettier-format": "prettier --config .prettierrc 'cypress/**/*.ts' --write",
+    "cy:run:chrome": "cypress run --browser chrome || EXIT_CODE=$? && yarn report && exit $EXIT_CODE",
+    "cy:run:firefox": "cypress run --browser firefox || EXIT_CODE=$? && yarn report && exit $EXIT_CODE",
+    "report": "mkdir -p reports && node cucumber-html-reporter.js"
   },
   "author": "Reinis Romanovs",
+  "license": "ISC",
   "dependencies": {
     "@types/node": "^17.0.10",
+    "cucumber-html-reporter": "^5.5.0",
     "cypress": "^9.3.1",
+    "cypress-cucumber-attach-screenshots-to-failed-steps": "^1.0.0",
     "cypress-cucumber-preprocessor": "^4.3.1",
     "prettier": "^2.5.1",
     "typescript": "^4.5.4"
   },
   "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true
+    "nonGlobalStepDefinitions": true,
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
   }
 }
