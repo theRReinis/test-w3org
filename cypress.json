@@ -1,5 +1,0 @@
-{
-    "testFiles": "**/*.{feature,features}",
-    "fixturesFolder": false,
-    "baseUrl": "https://www.w3.org"
-}
